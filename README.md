@@ -33,7 +33,7 @@ A drift-robust machine learning pipeline for predicting blood glucose levels fro
 
 Tree-based models significantly outperformed deep learning architectures which failed to generalize under sensor drift.
 
-![Model Comparison](model_comparison.png)
+![Model Comparison](images/model_comparison.png)
 
 *Left panel shows MAE where tree models achieve approximately 25 mg/dL error versus 50 mg/dL for deep learning. Center panel shows R² where tree models achieve 0.75-0.82 versus near-zero for deep learning. Right panel shows MARD where tree models achieve 15% versus 33-38% for deep learning.*
 
@@ -50,13 +50,13 @@ Tree-based models significantly outperformed deep learning architectures which f
 
 ### Prediction Accuracy
 
-![Clarke Grid Analysis](clarke_grid.png)
+![Clarke Grid Analysis](images/clarke_grid.png)
 
 *Left panel shows predicted versus reference glucose with color indicating error magnitude. Right panel shows residual analysis with most errors within the ±20 mg/dL clinical threshold.*
 
 ### Time Series Tracking
 
-![Tournament Winner](tournament_winner.png)
+![Tournament Winner](images/tournament_winner.png)
 
 *The ensemble tracks a major glycemic transition from 125 mg/dL to 375 mg/dL. The shaded region shows prediction error remaining small throughout.*
 
@@ -127,7 +127,7 @@ pip install -r requirements.txt
 python model.py
 ```
 
-Generates `model_comparison.png`, `clarke_grid.png`, and `tournament_winner.png`.
+Generates `images/model_comparison.png`, `images/clarke_grid.png`, and `images/tournament_winner.png`.
 
 ### Feature Analysis
 
@@ -152,6 +152,10 @@ glucovista-ml/
 ├── model.py                          # Training and evaluation pipeline
 ├── feature_engineering.py            # Feature creation functions
 ├── feature_analysis_dashboard.ipynb  # Visualization notebook
+├── images/                           # Generated visualizations
+│   ├── model_comparison.png
+│   ├── clarke_grid.png
+│   └── tournament_winner.png
 ├── Sensor Data 1_2/                  # (not in repo)
 ├── Sensor Data 2_2/                  # (not in repo)
 └── Glucose Data/                     # (not in repo)

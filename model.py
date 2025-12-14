@@ -318,6 +318,10 @@ def train_and_evaluate(base_path = "."):
     if raw_df.empty:
         return
 
+    # Create images directory if it doesn't exist
+    images_dir = Path(base_path) / "images"
+    images_dir.mkdir(exist_ok = True)
+
     df = fe.create_advanced_features(raw_df)
     df = df.dropna(subset = ['glucose'])
     df = df[(df['glucose'] >= 30) & (df['glucose'] <= 500)]
@@ -480,9 +484,9 @@ def train_and_evaluate(base_path = "."):
     ax2.grid(True, alpha = 0.3)
     
     plt.tight_layout()
-    plt.savefig('clarke_grid.png', dpi = 300, bbox_inches = 'tight')
+    plt.savefig(images_dir / 'clarke_grid.png', dpi = 300, bbox_inches = 'tight')
     plt.close()
-    print(">>> Saved clarke_grid.png")
+    print(">>> Saved images/clarke_grid.png")
 
     print(">>> Creating model comparison plot...")
     model_names = list(aligned.keys())
@@ -532,9 +536,9 @@ def train_and_evaluate(base_path = "."):
         ax3.text(bar.get_x() + bar.get_width()/2., height, f'{height:.1f}%', ha = 'center', va = 'bottom', fontsize = 9)
     
     plt.tight_layout()
-    plt.savefig('model_comparison.png', dpi = 300, bbox_inches = 'tight')
+    plt.savefig(images_dir / 'model_comparison.png', dpi = 300, bbox_inches = 'tight')
     plt.close()
-    print(">>> Saved model_comparison.png")
+    print(">>> Saved images/model_comparison.png")
     
     # Winner time series plot
     plt.figure(figsize = (14, 6))
@@ -570,12 +574,12 @@ def train_and_evaluate(base_path = "."):
     plt.legend(fontsize = 10, loc = 'best')
     plt.grid(True, alpha = 0.3)
     plt.tight_layout()
-    plt.savefig('tournament_winner.png', dpi = 300, bbox_inches = 'tight')
+    plt.savefig(images_dir / 'tournament_winner.png', dpi = 300, bbox_inches = 'tight')
     plt.close()
     
     zone_a, zone_b = clarke_error_grid_zones(y_eval, best_preds)
     print(f">>> Zone A: {zone_a:.1f}% | Zone A+B: {zone_a+zone_b:.1f}%")
-    print("\n>>> Saved tournament_winner.png")
+    print("\n>>> Saved images/tournament_winner.png")
 
 if __name__ == "__main__":
     train_and_evaluate(".")
