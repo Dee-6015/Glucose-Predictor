@@ -2,6 +2,8 @@
 
 **GlucoVista Research Collaboration | DS340W Team 7**
 
+**[Read the Full Technical Report (PDF)](Non_Invasive_Continuous_Glucose_Monitoring_Model_for_GlucoVista_IP.pdf)**
+
 A drift-robust machine learning pipeline for predicting blood glucose levels from multimodal non-invasive sensor data. This project demonstrates that tree-based ensembles operating on carefully engineered features outperform deep learning models under sensor drift conditions.
 
 ---
@@ -24,6 +26,7 @@ A drift-robust machine learning pipeline for predicting blood glucose levels fro
 3. [Installation and Usage](https://claude.ai/chat/db6aa3e1-e44f-47eb-a5a4-8a1021d355ce#installation-and-usage)
 4. [Data Privacy](https://claude.ai/chat/db6aa3e1-e44f-47eb-a5a4-8a1021d355ce#data-privacy)
 5. [Limitations and Future Work](https://claude.ai/chat/db6aa3e1-e44f-47eb-a5a4-8a1021d355ce#limitations-and-future-work)
+6. [Full Report](#full-report)
 
 ---
 
@@ -76,7 +79,8 @@ Adding deep learning components consistently degraded performance.
 
 ## Methodology Overview
 
-For detailed methodology, theoretical framework, and model justification, see the full report.
+For detailed methodology, theoretical framework, and model justification, see the
+[full technical report](Non_Invasive_Continuous_Glucose_Monitoring_Model_for_GlucoVista_IP.pdf).
 
 ### The Problem
 
@@ -148,6 +152,8 @@ The sensor and glucose data files are **not included** in this repository. The d
 ```
 glucovista-ml/
 ├── README.md
+├── Non_Invasive_Continuous_Glucose_Monitoring_Model_for_GlucoVista_IP.pdf
+│                                   # Full technical report
 ├── requirements.txt
 ├── model.py                          # Training and evaluation pipeline
 ├── feature_engineering.py            # Feature creation functions
@@ -160,6 +166,22 @@ glucovista-ml/
 ├── Sensor Data 2_2/                  # (not in repo)
 └── Glucose Data/                     # (not in repo)
 ```
+
+---
+
+## Full Report
+
+The complete write-up is included in this repository:
+
+**[Non-Invasive Continuous Glucose Monitoring Model for GlucoVista](Non_Invasive_Continuous_Glucose_Monitoring_Model_for_GlucoVista_IP.pdf)**
+
+It covers:
+
+* The full problem framing and experimental protocol
+* Why sensor baseline drift breaks sequence models on this dataset
+* Derivation of the 134 drift-resistant features
+* The time-chunk validation scheme and why standard splits leak
+* Ensemble tournament results and Clarke Error Grid interpretation
 
 ---
 
